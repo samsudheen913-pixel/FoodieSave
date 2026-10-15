@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodieSave | Reduce Food Waste</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5faf4;color:#26352b}
+header{background:#16834a;color:white;padding:22px 15px;text-align:center}
+header h1{margin:0;font-size:30px}
+nav{background:#11683b;padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:0 10px;font-weight:bold}
+.hero{text-align:center;padding:45px 18px;background:#e0f4e4}
+.hero h2{font-size:30px;color:#11683b}
+.hero p{line-height:1.6}
+button{background:#16834a;color:white;border:0;padding:12px 18px;border-radius:7px;cursor:pointer}
+section{padding:25px 16px;max-width:850px;margin:auto}
+h2{color:#16834a}
+.card{background:white;padding:18px;margin:12px 0;border-radius:12px;box-shadow:0 2px 8px #00000012}
+input,textarea{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #ccc;border-radius:6px}
+footer{background:#11683b;color:white;text-align:center;padding:18px}
+#message{font-weight:bold;color:#16834a}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🥗 FoodieSave</h1>
+<p>Save Food • Share Happiness • Protect Earth</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#tips">Tips</a>
+<a href="#share">Share Food</a>
+</nav>
+
+<div class="hero" id="home">
+<h2>Good Food Deserves a Second Chance!</h2>
+<p>FoodieSave helps people reduce food waste, share surplus food responsibly, and build a sustainable future.</p>
+<button onclick="document.getElementById('share').scrollIntoView({behavior:'smooth'})">Share Surplus Food</button>
+</div>
+
+<section id="tips">
+<h2>🌱 Reduce Food Waste</h2>
+<div class="card">
+<h3>🛒 Plan Your Shopping</h3>
+<p>Buy only what you need and make a shopping list before visiting the store.</p>
+</div>
+<div class="card">
+<h3>❄️ Store Food Properly</h3>
+<p>Keep food at the right temperature and follow storage instructions.</p>
+</div>
+<div class="card">
+<h3>🍲 Use Leftovers</h3>
+<p>Turn safely stored leftovers into another meal instead of throwing them away.</p>
+</div>
+<div class="card">
+<h3>🤝 Share Surplus Food</h3>
+<p>Share suitable, safely handled surplus food with people who can use it.</p>
+</div>
+</section>
+
+<section id="share">
+<h2>🍱 Share Your Surplus Food</h2>
+<p>Enter food details to create a listing on this page.</p>
+<form id="foodForm">
+<label>Food name</label>
+<input id="foodName" placeholder="Example: Fresh vegetables" required>
+<label>Quantity</label>
+<input id="quantity" placeholder="Example: 2 kg" required>
+<label>Location</label>
+<input id="location" placeholder="Your area or city" required>
+<label>Contact details (optional)</label>
+<input id="contact" placeholder="Email or phone">
+<button type="submit">Add Food Listing</button>
+</form>
+<p id="message"></p>
+<div id="listings"></div>
+</section>
+
+<footer>
+<p>© 2026 FoodieSave | Together for a Waste-Free World 🌍</p>
+</footer>
+
+<script>
+document.getElementById('foodForm').addEventListener('submit',function(e){
+e.preventDefault();
+const name=document.getElementById('foodName').value;
+const quantity=document.getElementById('quantity').value;
+const location=document.getElementById('location').value;
+const contact=document.getElementById('contact').value;
+
+const card=document.createElement('div');
+card.className='card';
+const title=document.createElement('h3');
+title.textContent='🍎 '+name;
+const details=document.createElement('p');
+details.textContent='Quantity: '+quantity+' | Location: '+location;
+card.append(title,details);
+
+if(contact){
+const info=document.createElement('p');
+info.textContent='Contact: '+contact;
+card.append(info);
+}
+
+document.getElementById('listings').prepend(card);
+document.getElementById('message').textContent='Food listing added to this page!';
+this.reset();
+});
+</script>
+
+</body>
+</html>
